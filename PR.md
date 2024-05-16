@@ -1,3 +1,7 @@
+# Distribuição das aplicações
+Tentei desenvolver o "docker-compose.yml" e "DockerFiles" de cada um dos serviços
+Não consegui colocar os serviços a funcionar
+De qualquer forma, anexei os ficheiros que desenvolvi, caso tenha alguma relevância
 
 #1.1 Setup
 - comecei por usar um conversor online para conveter csv para json

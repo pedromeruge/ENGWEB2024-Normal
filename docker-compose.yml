@@ -1,16 +1,35 @@
+version: '3'
 
-version: '3.8'
 services:
   mongodb:
-    image: mongo:latest
+    image: mongo
+    container_name: mongodb
+    restart: always
     ports:
       - "27017:27017"
-    depends_on:
-      - mongo-seed
-  mongo-seed:
-    container_name: testeContratos-mongo-seed
-    image: mongo:latest
     volumes:
-      - /Users/peters/Desktop/Teste/ENGWEB2024-Normal/contratos2024.json:/datasets//Users/peters/Desktop/Teste/ENGWEB2024-Normal/contratos2024.json
+      - ./data:/data/db
 
-    command: /bin/bash -c "mongoimport --host mongodb -d contratos -c contratos --type json --file /datasets//Users/peters/Desktop/Teste/ENGWEB2024-Normal/contratos2024.json --jsonArray"
+  api:
+    build:
+      context: ./ex1/contratosAPI
+      dockerfile: DockerFile
+    container_name: api
+    restart: always
+    ports:
+      - "16000:16000"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGODB_URI=mongodb://mongodb/contratos
+
+  frontend:
+    build:
+      context: ./ex2/contratos
+      dockerfile: DockerFile
+    container_name: frontend
+    restart: always
+    ports:
+      - "16001:16001"
+    depends_on:
+      - api
