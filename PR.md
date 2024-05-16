@@ -7,9 +7,10 @@ De qualquer forma, anexei os ficheiros que desenvolvi, caso tenha alguma relevâ
 - comecei por usar um conversor online para conveter csv para json
 - troquei o id das entradas para _id com ctr+f replace no vscode
 - depois corri o script script.py para criar um docker-compose com mongodb e as coleções
-    - escrevi neste comando "python3 script.py contratos testeContratos contratos ~/Desktop/Teste/ENGWEB2024-Normal/contratos2024.json"
+    - escrevi este comando "python3 script.py contratos testeContratos contratos ~/Desktop/Teste/ENGWEB2024-Normal/contratos2024.json"
     - este script cria um container com mongoDB e outro container para o serviço a desenvolver
     - fornecidos o nome do dataset, da coleção e o ficheiro do import, o script automaticamente cria, com mongoimport, a coleção (no ficheiro dado) para o container do serviço
+    - mais tarde substitui este docker-compose por um novo que tentava incorporar todos os serviços e mongoDB
 
 - ao acrescentar as entradas ao container com o script, verifiquei que deu o output "36377 document(s) imported successfully", logo foram importadas as entradas corretamente
 - de qualquer forma corri o comando "db.contratos.countDocuments()" dentro da respetiva mongosh e obtive o mesmo resultado 36777 o que comprova a importação correta
